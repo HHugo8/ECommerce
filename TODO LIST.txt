@@ -1,0 +1,34 @@
+Menu vertical à gauche qui apparait au survol de la souris
+gallerie de tuiles d'images dans le header
+menu :
+-home
+-news
+-Catalogue  : art et décorations, arts et objets, design
+-events
+-about
+-contact us
+-faire une recherche : catégories, nom d'une oeuvre
+En dessous les catégories :
+- Vintage
+-art contemporain
+-painting
+-black and white
+-photos
+-lights
+
+
+
+pouvoir rechanger de catégorie dans un menu sur la gauche
+Ajouter photos + noms des devs dans la partie about
+couleurs : neutral blue  sur kuler (plus froid)  / cherry bomb
+police de caractères : roboto (dafont) 
+
+dans la DB, système de tags pour une oeuvre, iban pour chaque oeuvre
+
+pop up pour s'inscrire à la newsletter ( pour membres non connectés)
+
+Pour la partie espace personnel (eth0)
+
+Pour la location, inscrire en dessous de l'oeuvre si la location est ^possible
+
+Créer un github
