@@ -54,6 +54,7 @@
 								<div class="navbar-collapse collapse sidebar-navbar-collapse">
 								  <ul class="nav navbar-nav">
 									<li><a href="#">Home</a></li>
+<<<<<<< HEAD
 									<li><a href="#">News</a></li>
 									<li><a href="#">Catalogue</a>
 										<!--<ul>
@@ -66,6 +67,10 @@
 											<li>Games</li>
 										</ul>-->
 									</li>
+=======
+									<li><a href="#">Events</a></li>
+									<li><a href="#">Catalogue</a></li>
+>>>>>>> origin/master
 									<li><a href="#">Events</a></li>
 									<li><a href="#">About</a></li>
 									<li><a href="#">Contact us</a></li>
@@ -129,7 +134,11 @@
             <div class="col-lg-6">
               Dernières oeuvres ajoutées
 			         <div id="mosaique">
+<<<<<<< HEAD
 						<a href="traitement.php">Upload d'images</a>
+=======
+						<a href="insertionBlob.php">Upload d'images</a>
+>>>>>>> origin/master
 					</div>
             </div>
             <article class="col-lg-6">
@@ -143,7 +152,11 @@
       </div>
       <footer class="row" id="autre">
         <div class="col-lg-12">
+<<<<<<< HEAD
           Mentions légales
+=======
+          Nos partenaires
+>>>>>>> origin/master
         </div>
       </footer>
     </div>
