@@ -1,43 +1,36 @@
 html{
-	background-color: #DEB887;
+	background-color: #D1DBBD;
+}
+body{
+	background-image:url(pics/background.png);
 }
 #menu {
 	padding: 0; margin: 0;
 	text-align: center;
 	
 }
-#menu li {
-	display: inline-block;
-	border:1px solid black;
-	list-style: none;
-	background-color: red;
+#logo{
+	
 }
-#menu a {
-	display:inline-block;
-	margin: 0 30px;
-	text-decoration:none;
-	color:black;
+#follow{
+	float:left;
 }
-#menu a:hover {
-	display:inline-block;
-	margin: 0 30px;
-	text-decoration:none;
-	color:black;
-}
-.description{
+#description{
+	background-color: #D1DBBD;
 	text-align:center;
 	float:center;
-	color:red;
+	color:#3E606F;
 }
 #category{
 	float:left;
 	margin-left:30px;
 	border: 1px solid black;
 }
+#principale{
+	;
+}
 figure {
     position: relative;
-	float:left;
-
     display: inline-block;
     overflow: hidden;
     margin: 0;
@@ -71,4 +64,84 @@ figure:hover img {
 figure:hover figcaption {
     opacity: 0.5;
 }
+.row {
+
+  margin-right: -15px;
+  margin-left: -15px;
+
+}
+
+.container {
+
+  padding-right: 15px;
+
+  padding-left: 15px;
+
+  margin-right: auto;
+
+  margin-left: auto;
+
+}
+[class*="col-"], footer {
+
+
+  border: 2px solid red;
+
+  border-radius: 6px;
+
+  line-height: 40px;
+
+  text-align: center;
+
+}
+/* make sidebar nav vertical */ 
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+	background-color: #D1DBBD;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+    .sidebar-nav .navbar li a:hover {
+    padding-top: 12px;
+    padding-bottom: 12px;
+	color:red;
+  }
+}
+#autre{
+	color:#FCFFF5;
+}
+.affichages{
+	border: 1px solid green;
+	float: left;
+	padding-left:20px;
+}
+.resize{
+	max-width: 200px;
+	height: auto;
+}
+/*.resize:hover{
+	max-width: 500px;
+	height: auto;
+}*/
+#cats{
+	padding-top:50px;
+	text-align:center;
+}
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }

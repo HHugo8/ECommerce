@@ -1,61 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+<!DOCTYPE html>
+<html>
    <head>
        <title>Ma galerie d'images</title>
-       <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-	   <style type="text/css">
-		body {
-			width: 95%;
-		}
- 
-		div {
-			width: 22%;
-			float: left;
-			text-align: center;
-			border: 1px solid black;
-			margin: 5px;
-			padding:  5px;
-		}
- 
-		p {
-			text-align: left;
-		}
- 
-		a {
-			color: #000000;
-			text-decoration: none;
-		}
-	   </style>
+       <meta charset="utf8" />
+	   <link rel="stylesheet" href="main.css" type="text/css"/>
+	   <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
    </head>
    <body>
  
-	<h1>Ma galerie d'images</h1>
- 
 	<?php
-    if(!empty($_GET['id_img'])) {
+    if(!empty($_GET['id'])) {
 	require('connect.php');
-	$idImg = intval($_GET['id_img']);
+	$idImg = intval($_GET['id']);
  
-	$req = $bdd->prepare('SELECT extension, img FROM images WHERE id_img = ?');
-	$req->execute(array($idImg));		
+	$req = $bdd->prepare('SELECT * FROM images WHERE id_img = :id');
+	$req->execute(array('id' => $idImg));		
  
 	if($req->rowCount() != 1)
 		echo 'L\'image n\'existe pas !';
 	else {
-		//on stocke les données dans un tableau
 		$donnees = $req->fetch();		
-		//on indique qu'on affiche une image
-		header ("Content-type: ".$donnees['extension']);
-		//on affiche l'image en elle même
-		echo $donnees['img'];
+		//header ("Content-type: ".$donnees['extension']);
 	}
  
 	$req->closeCursor();
  
     } else
            echo 'Vous n avez pas sélectionné d image !';
-?>loseCursor();
-	?>
- 
+?>
+		<div class="row">
+			<div class=" col-md-offset-2 col-md-8">
+				<label id="autre"><h1><?php echo $donnees['nom'] ?></h1></label>
+			</div>
+		</div>
+		<div class="row">
+			<div class=" col-md-offset-2 col-md-8">
+				<img src="<?php echo $donnees['chemin'] ?>" /><br/>
+				<label id="autre"><h2>Description : <?php echo $donnees['description'] ?> </h2></label><br/>
+				<label id="autre"><h2>Dimensions de l'oeuvre : <?php //echo $donnees['nom'] ?> </h2></label><br/>
+				<label id="autre"><h2>Numéro de référence pour l'oeuvre : <?php //echo $donnees['nom'] ?> </h2></label><br/>
+				<label id="autre"><h2>Prix : <?php //echo $donnees['nom'] ?> </h2></label><br/>
+				<label id="autre"><h2>Est disponible à la location : <?php //echo $donnees['nom'] ?> </h2></label><br/>
+			</div>
+		</div>
 </body>
 </html>
