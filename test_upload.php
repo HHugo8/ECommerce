@@ -29,8 +29,8 @@ function ajout_image ($nom,$description,$chemin,$extension,$category)
 			{
 				echo 'Upload effectué avec succès !';
 				$chemin = $dossier . $fichier;
-				$nom = $_POST['nom'];
-				$description = $_POST['description'];
+				$nom = htmlspecialchars(addslashes($_POST['nom']));
+				$description = htmlspecialchars(addslashes($_POST['description']));
 				$category = $_POST['category'];
 				$extension = $_FILES['monfichier']['type'];
 				ajout_image($nom,$description,$chemin,$extension,$category);

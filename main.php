@@ -11,7 +11,7 @@
     </head>
 
 
-    <body>
+    <body id="base">
 	
       <header class="row">
         <div class="col-lg-1" id="logo">
@@ -142,8 +142,11 @@
         </section>
       </div>
       <footer class="row" id="autre">
-        <div class="col-lg-12">
+        <div class="col-lg-11">
           Mentions légales
+        </div>
+		        <div class="col-lg-1">
+          <a href="admin/adminMain.php">Espace Admin</a>
         </div>
       </footer>
     </div>

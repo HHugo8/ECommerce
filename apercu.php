@@ -6,7 +6,7 @@
 	   <link rel="stylesheet" href="main.css" type="text/css"/>
 	   <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
    </head>
-   <body>
+   <body id="base">
  
 	<?php
     if(!empty($_GET['id'])) {
@@ -35,7 +35,7 @@
 		</div>
 		<div class="row">
 			<div class=" col-md-offset-2 col-md-8">
-				<img src="<?php echo $donnees['chemin'] ?>" /><br/>
+				<label id="autre"><img src="<?php echo $donnees['chemin'] ?>"/></label><br/>
 				<label id="autre"><h2>Description : <?php echo $donnees['description'] ?> </h2></label><br/>
 				<label id="autre"><h2>Dimensions de l'oeuvre : <?php //echo $donnees['nom'] ?> </h2></label><br/>
 				<label id="autre"><h2>Numéro de référence pour l'oeuvre : <?php //echo $donnees['nom'] ?> </h2></label><br/>
