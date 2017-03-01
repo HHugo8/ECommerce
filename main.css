@@ -1,11 +1,16 @@
 html{
 	background-color: #D1DBBD;
 }
+<<<<<<< HEAD
 #base{
 	background-image:url(pics/background.png);
 }
 #admin{
 	background-color: #193441;
+=======
+body{
+	background-image:url(pics/background.png);
+>>>>>>> origin/master
 }
 #menu {
 	padding: 0; margin: 0;
@@ -30,7 +35,11 @@ html{
 	border: 1px solid black;
 }
 #principale{
+<<<<<<< HEAD
 	
+=======
+	;
+>>>>>>> origin/master
 }
 figure {
     position: relative;
@@ -70,10 +79,23 @@ figure:hover figcaption {
 .row {
 
   margin-right: -15px;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   margin-left: -15px;
 
 }
 
+<<<<<<< HEAD
+=======
+=======
+
+  margin-left: -15px;
+
+}
+>>>>>>> origin/master
+>>>>>>> origin/master
 .container {
 
   padding-right: 15px;
@@ -88,7 +110,15 @@ figure:hover figcaption {
 [class*="col-"], footer {
 
 
+<<<<<<< HEAD
   border: 2px solid red;
+=======
+<<<<<<< HEAD
+  border: 2px solid red;
+=======
+  border: 2px solid black;
+>>>>>>> origin/master
+>>>>>>> origin/master
 
   border-radius: 6px;
 
@@ -124,6 +154,10 @@ figure:hover figcaption {
 }
 #autre{
 	color:#FCFFF5;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 }
 .affichages{
 	border: 1px solid green;
@@ -147,6 +181,7 @@ figure:hover figcaption {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+<<<<<<< HEAD
 }
 #myButton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #54a3f7;
@@ -189,4 +224,8 @@ figure:hover figcaption {
 }
 #affichage_news{
 	float: center;
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
 }

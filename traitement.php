@@ -11,7 +11,11 @@
 		}
 	   </style>
    </head>
+<<<<<<< HEAD
    <body id="base">
+=======
+   <body>
+>>>>>>> origin/master
  
 	<h1>Envoyer une image</h1>
 	<form enctype="multipart/form-data" action="test_upload.php" method="post">
