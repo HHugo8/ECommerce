@@ -11,11 +11,7 @@
     </head>
 
 
-<<<<<<< HEAD
     <body id="base">
-=======
-    <body>
->>>>>>> origin/master
 	
       <header class="row">
         <div class="col-lg-1" id="logo">
@@ -58,14 +54,8 @@
 								<div class="navbar-collapse collapse sidebar-navbar-collapse">
 								  <ul class="nav navbar-nav">
 									<li><a href="#">Home</a></li>
-<<<<<<< HEAD
 									<li><a href="#">News</a></li>
 									<li><a href="gallerie.php">Catalogue</a>
-=======
-<<<<<<< HEAD
-									<li><a href="#">News</a></li>
-									<li><a href="#">Catalogue</a>
->>>>>>> origin/master
 										<!--<ul>
 											<li>Vintage</li>
 											<li>Art contemporain</li>
@@ -76,13 +66,6 @@
 											<li>Games</li>
 										</ul>-->
 									</li>
-<<<<<<< HEAD
-=======
-=======
-									<li><a href="#">Events</a></li>
-									<li><a href="#">Catalogue</a></li>
->>>>>>> origin/master
->>>>>>> origin/master
 									<li><a href="#">Events</a></li>
 									<li><a href="#">About</a></li>
 									<li><a href="#">Contact us</a></li>
@@ -144,43 +127,20 @@
 		</div>
           <div class="row" id="autre">
             <div class="col-lg-6">
-              Dernières oeuvres ajoutées
-			         <div id="mosaique">
-<<<<<<< HEAD
-						<a href="traitement.php">Upload d'images</a>
-=======
-<<<<<<< HEAD
-						<a href="traitement.php">Upload d'images</a>
-=======
-						<a href="insertionBlob.php">Upload d'images</a>
->>>>>>> origin/master
->>>>>>> origin/master
-					</div>
+				<?php //include('last_images.php') ?>
             </div>
-            <article class="col-lg-6">
-
-				<div id="last_post">
-					<label>Derniers articles créés </label>
-				</div>
-            </article>
+            <div class="col-lg-6">
+				<?php include('last_news.php') ?>
+            </div>
           </div>
         </section>
       </div>
       <footer class="row" id="autre">
-<<<<<<< HEAD
         <div class="col-lg-11">
           Mentions légales
         </div>
-		        <div class="col-lg-1">
+		<div class="col-lg-1">
           <a href="admin/adminMain.php">Espace Admin</a>
-=======
-        <div class="col-lg-12">
-<<<<<<< HEAD
-          Mentions légales
-=======
-          Nos partenaires
->>>>>>> origin/master
->>>>>>> origin/master
         </div>
       </footer>
     </div>

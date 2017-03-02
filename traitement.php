@@ -11,11 +11,7 @@
 		}
 	   </style>
    </head>
-<<<<<<< HEAD
    <body id="base">
-=======
-   <body>
->>>>>>> origin/master
  
 	<h1>Envoyer une image</h1>
 	<form enctype="multipart/form-data" action="test_upload.php" method="post">
@@ -29,8 +25,11 @@
 												<OPTION value="5">photos</OPTION>
 												<OPTION value="6">lights</OPTION>
 												<OPTION value="7">Games</OPTION></SELECT><br/>
-			<label for="nom">Nom : </label><input type="text" name="nom" id="nom" /><br />
+			<label for="nom">Nom de l'oeuvre: </label><input type="text" name="nom" id="nom" /><br />
 			<label for="description">Description : </label><textarea name="description" id="description" rows="10" cols="50"></textarea><br />
+			<label for="price">Prix : </label><input type="text" name="price" id="price" /><br />
+			<label for="size">Dimensions : </label><input type="text" name="size" id="size" /><br />
+			<label for="artist">Nom de l'artiste : </label><input type="text" name="artist" id="artist" /><br />
 			<label for="image">Image : </label><input type="file" name="monfichier" id="monfichier" /><br />
 			<label for="validation"></label><input type="submit" name="upload" id="upload" value="upload" />
 		</p>

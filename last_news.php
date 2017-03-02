@@ -4,27 +4,26 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>News</title>
         <link rel="stylesheet" href="main.css" type="text/css"/>
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
         
     </head>
-	<body id="base">
+	<body id="last_news">
 			<div class="row row-eq-height" id="autre">
-				<div class="col-lg-offset-2 col-lg-8">
-					<h1>Liste des news</h1>
+				<div class="col-md-offset-2 col-md-8">
+					<h2>Les dernières news</h2>
 				</div>
 			</div>
 				<?php
 				 try
 				{
 					require('connect.php');
-					$reponse = $bdd->query('SELECT * FROM news');
+					$reponse = $bdd->query('SELECT * FROM news ORDER BY created LIMIT 5');
 					 
 					while ($donnees = $reponse->fetch())
 					{?>
-						<div class="row row-eq-height" id="autre">
-							<div class="col-lg-offset-3 col-lg-6" >
+						<div class="row" id="autre">
+							<div class="col-md-offset-4 col-md-4" >
 								<div id="affichage_news">
 								Titre : <?php echo nl2br(stripcslashes($donnees['title']))?><br/>
 								Catégorie : <?php echo $donnees['category']?><br/>

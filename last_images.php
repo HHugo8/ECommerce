@@ -4,31 +4,28 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>News</title>
         <link rel="stylesheet" href="main.css" type="text/css"/>
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
         
     </head>
-	<body id="base">
+	<body id="last_news">
 			<div class="row row-eq-height" id="autre">
-				<div class="col-lg-offset-2 col-lg-8">
-					<h1>Liste des news</h1>
+				<div class="col-md-offset-2 col-md-8">
+					<h2>Les dernières oeuvres</h2>
 				</div>
 			</div>
 				<?php
 				 try
 				{
 					require('connect.php');
-					$reponse = $bdd->query('SELECT * FROM news');
+					$reponse = $bdd->query('SELECT * FROM items ORDER BY uploaded_date LIMIT 6');
 					 
 					while ($donnees = $reponse->fetch())
 					{?>
-						<div class="row row-eq-height" id="autre">
-							<div class="col-lg-offset-3 col-lg-6" >
-								<div id="affichage_news">
-								Titre : <?php echo nl2br(stripcslashes($donnees['title']))?><br/>
-								Catégorie : <?php echo $donnees['category']?><br/>
-								Contenu : <?php echo nl2br(stripcslashes($donnees['content']))?><br/>
+						<div class="row" id="autre">
+							<div class="col-md-offset-1 col-md-4" >
+								<div>
+									<a href="apercu.php?id=<?php $donnees['id_items'] ?>"><img src="<?php $donnees['link'] ?>" alt=" <?php stripcslashes($donnees['description']) ?>" /></a>
 								</div>
 							</div>
 						</div><?php

@@ -13,7 +13,7 @@
 	require('connect.php');
 	$idImg = intval($_GET['id']);
  
-	$req = $bdd->prepare('SELECT * FROM images WHERE id_img = :id');
+	$req = $bdd->prepare('SELECT * FROM items WHERE id_items = :id');
 	$req->execute(array('id' => $idImg));		
  
 	if($req->rowCount() != 1)
@@ -35,11 +35,11 @@
 		</div>
 		<div class="row">
 			<div class=" col-md-offset-2 col-md-8">
-				<label id="autre"><img src="<?php echo $donnees['chemin'] ?>"/></label><br/>
+				<label id="autre"><img src="<?php echo $donnees['link'] ?>"/></label><br/>
 				<label id="autre"><h2>Description : <?php echo $donnees['description'] ?> </h2></label><br/>
-				<label id="autre"><h2>Dimensions de l'oeuvre : <?php //echo $donnees['nom'] ?> </h2></label><br/>
+				<label id="autre"><h2>Dimensions de l'oeuvre : <?php echo $donnees['size'] ?> </h2></label><br/>
 				<label id="autre"><h2>Numéro de référence pour l'oeuvre : <?php //echo $donnees['nom'] ?> </h2></label><br/>
-				<label id="autre"><h2>Prix : <?php //echo $donnees['nom'] ?> </h2></label><br/>
+				<label id="autre"><h2>Prix : <?php echo $donnees['price'] ?> </h2></label><br/>
 				<label id="autre"><h2>Est disponible à la location : <?php //echo $donnees['nom'] ?> </h2></label><br/>
 			</div>
 		</div>

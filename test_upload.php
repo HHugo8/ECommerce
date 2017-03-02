@@ -1,13 +1,13 @@
 <?php
-function ajout_image ($nom,$description,$chemin,$extension,$category)
+function ajout_image($nom, $category, $chemin, $extension, $description, $artist, $prix, $size, $upload_date)
 {
 	require('connect.php');
-	$result = $bdd->prepare('INSERT INTO images (id_img,nom,description,chemin,extension,category) VALUES(0 ,:nom,:description,:chemin,:extension,:category)');
-	$result->execute(array('nom' => $nom ,'description' => $description ,'chemin' => $chemin ,'extension' => $extension,'category' => $category));
+	$result = $bdd->prepare('INSERT INTO items (id_items, nom, category, link, extension, description, artist, price, size, upload_date, isApproved) VALUES(0 , :nom, :category, :link, :extension, :description, :artist, :price, :size, :upload_date, 0)');
+	$result->execute(array('nom' => $nom , 'category' => $category, 'link' => $chemin , 'extension' => $extension, 'description' => $description , 'artist' => $artist, 'price' => $prix, 'size' => $size, 'upload_date' => $upload_date ));
 };
 		$dossier = 'site/';
 		$fichier = basename($_FILES['monfichier']['name']);
-		$taille_maxi = 100000;
+		$taille_maxi = 300000;
 		$taille = filesize($_FILES['monfichier']['tmp_name']);
 		$extensions = array('.png', '.gif', '.jpg', '.jpeg', '.PNG', '.GIF', '.JPG');
 		$extension = strrchr($_FILES['monfichier']['name'], '.'); 
@@ -29,16 +29,15 @@ function ajout_image ($nom,$description,$chemin,$extension,$category)
 			{
 				echo 'Upload effectué avec succès !';
 				$chemin = $dossier . $fichier;
-<<<<<<< HEAD
 				$nom = htmlspecialchars(addslashes($_POST['nom']));
 				$description = htmlspecialchars(addslashes($_POST['description']));
-=======
-				$nom = $_POST['nom'];
-				$description = $_POST['description'];
->>>>>>> origin/master
+				$artist = htmlspecialchars(addslashes($_POST['artist']));
+				$prix = htmlspecialchars(addslashes($_POST['price']));
+				$size = htmlspecialchars(addslashes($_POST['size']));
 				$category = $_POST['category'];
 				$extension = $_FILES['monfichier']['type'];
-				ajout_image($nom,$description,$chemin,$extension,$category);
+				$upload_date = date("Y-m-d h:i:s");
+				ajout_image($nom, $category, $chemin, $extension, $description, $artist, $prix, $size, $upload_date);
 			}
 			else 
 			{
