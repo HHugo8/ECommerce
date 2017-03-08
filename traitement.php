@@ -1,82 +1,39 @@
-<!DOCTYPE>
-    <head>
-        <title>Upload d'images</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <link href="style.css" rel="stylesheet" type="text/css" />
-    </head>
-         
-    <body>
-    <form action="traitement.php" method="post" enctype="multipart/form-data">
-        <p>
-                Formulaire d'envoi de fichier :<br />
-                <input type="file" name="monfichier" /><br />
-                <input type="submit" value="Envoyer le fichier" />
-        </p>
-</form>
+<!DOCTYPE HTML>
+<html>
+   <head>
+       <title>Envoyer une image</title>
+       <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	   <style type="text/css">
+		label {
+			display:block;
+			width:150px;
+			float:left;
+		}
+	   </style>
+   </head>
+   <body id="base">
  
-<?php
-require('connect.php');
-     
- $nom = md5(uniqid("produit_", true));
- $name = "site/".str_replace(' ','',$nom);
-// Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-if (isset($_FILES['monfichier']) AND $_FILES['monfichier']['error'] == 0)
-{
-        // Testons si le fichier n'est pas trop gros
-        if ($_FILES['monfichier']['size'] <= 1000000)
-        {
-                // Testons si l'extension est autorisée
-                $infosfichier = pathinfo($_FILES['monfichier']['name']);
-                $extension_upload = $infosfichier['extension'];
-                $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
-                if (in_array($extension_upload, $extensions_autorisees))
-                {
-                        // On peut valider le fichier et le stocker définitivement
-                         
-                       $result = move_uploaded_file($_FILES['monfichier']['tmp_name'],$name);
-if ($result) echo "Transfert réussi"; else { echo 'echec transfert';}
-                         
- 
-                }
-        }
-}
- 
- 
-try
-{
-         
-    // On récupère tout le contenu de la table photo
-    $reponse = $bdd->query('SELECT * FROM images');
-     
-    $req = $bdd->prepare('INSERT INTO images VALUES(?,?,?,?)');
-	$req->execute(array(
-						'nom' => $_POST['nom'],
-						'description' => $_POST['description'],
-						'chemin' => 'pics/'.$nom,
-						'extension' => $_FILES['image']['type']));
- 
- 
-    // On affiche chaque entrée une à une
-    while ($donnees = $reponse->fetch())
-    {
-    ?>
-        <p>
-         <img src="site/<?php echo $nom; ?>" ><br />
-        </p>
-    <?php
-    }
-              
-    $reponse->closeCursor(); // Termine le traitement de la requête
- 
-}
-catch(Exception $e)
-{
-    // En cas d'erreur précédemment, on affiche un message et on arrête tout
-    die('Erreur : '.$e->getMessage());
-}
- 
- 
-?>
- 
+	<h1>Envoyer une image</h1>
+	<form enctype="multipart/form-data" action="test_upload.php" method="post">
+		<p>
+			<label for="category">Catégorie : </label><SELECT name="category" size="1">
+												<OPTION selected>---</OPTION>
+												<OPTION value="1">Vintage</OPTION>
+												<OPTION value="2">art contemporain</OPTION>
+												<OPTION value="3">painting</OPTION>
+												<OPTION value="4">black and white</OPTION>
+												<OPTION value="5">photos</OPTION>
+												<OPTION value="6">lights</OPTION>
+												<OPTION value="7">Games</OPTION></SELECT><br/>
+			<label for="nom">Nom de l'oeuvre: </label><input type="text" name="nom" id="nom" /><br />
+			<label for="description">Description : </label><textarea name="description" id="description" rows="10" cols="50"></textarea><br />
+			<label for="price">Prix : </label><input type="text" name="price" id="price" placeholder="0.0"/><br />
+			<label for="size">Dimensions : </label><input type="text" name="size" id="size" placeholder="L x l x h"/><br />
+			<label for="artist">Nom de l'artiste : </label><input type="text" name="artist" id="artist" /><br />
+			<label for="image">Image : </label><input type="file" name="monfichier" id="monfichier" /><br />
+			<label for="validation"></label><input type="submit" name="upload" id="upload" value="upload" />
+		</p>
+	</form>
 </body>
+<?php include('footer.php') ?>
 </html>

@@ -15,7 +15,9 @@ En dessous les catégories :
 -black and white
 -photos
 -lights
-
+-Games  (
+//faire apparaitre des image(miniature) au survol des sous menus du menu catalogue ( ex : une photo pour la catégorie photo)
+créer un système de choix de catégorie lors de l'upload de l'image
 
 
 pouvoir rechanger de catégorie dans un menu sur la gauche
@@ -31,4 +33,19 @@ Pour la partie espace personnel (eth0)
 
 Pour la location, inscrire en dessous de l'oeuvre si la location est ^possible
 
-Créer un github
+Créer un github-done
+
+footer: logo livraison (24h)
+
+dans le contact us, faire apparaitre un menu en fonction du choix
+ - Plus d'information sur une oeuvre
+ - Vous désirez partager une oeuvre
+
+
+Flux rss
+pop up au lancement de l'accueil pour newsletter
+
+08 mars présentation du cahier des charges
+29 mars, 1ere présentation du travail
+
+rajouter un isbn dans les oeuvres/dispo location

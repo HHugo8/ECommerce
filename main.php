@@ -6,57 +6,41 @@
         <meta charset="utf-8" />
         <title>E-World Art Gallery</title>
         <link rel="stylesheet" href="main.css" type="text/css"/>
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
         
     </head>
 
 
-    <body>
-		<div id="menu">
-		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">News and Events</a></li>
-			<li><a href="#">Concept & Origin of the idea</a></li>
-			<li><a href="#">Contempory Art Market</a></li>
-			<li><a href="#">Services in the near future</a></li>
-			<li><a href="#">Advertising & Public Relations</a></li>
-			<li><a href="#">About us</a></li>
-		</ul>
-																		
-		</div>
-		<br/>
-		<div class="description">
-			<p><h1>E-World Art Gallery</h1>
-			<h4>A Virtual Gallery</h4>
-			</p>
+    <body id="base">
+	
+      <header class="row">
+        <div class="col-md-1" id="logo">
+          <img src="http://img11.hostingpics.net/pics/631764logo.jpg" />
         </div>
-        <div class="principale">
-				<div id="category">
-					<figure>
-						<img src="http://img11.hostingpics.net/pics/217514categoryLuminaires.jpg" />
-						<figcaption><a href="#">Catégorie 1</a></figcaption>
-					</figure>
-				</div>
-				<div id="category">
-					<figure>
-						<a><img src="http://img11.hostingpics.net/pics/795037categorydraws.jpg" /></a>
-						<figcaption><a href="#">Catégorie 2</a></figcaption>
-					</figure>
-				</div>
-				<div id="category">
-					<figure>
-						<a><img src="http://img11.hostingpics.net/pics/832232categoryVitrine.jpg" /></a>
-						<figcaption><a href="#">Catégorie 3</a></figcaption>
-					</figure>
-				</div>
+		<div class="col-md-3" id="description">
+          	<p><h1>E-World Art Gallery</h1>
+			<h4>A Virtual Gallery</h4></p>
         </div>
-		<div id="mosaique">
-			<a href="insertionBlob.php">Upload d'images</a>
-			
-		</div>
-		<div id="last_post">
-			<label>Post à écrire </label>
-		</div>
+		<div class="col-md-2">
+			<form action="search.php" method="post">
+				<input type="text" name="search" id="search" placeholder="mot recherché" /><input type="submit" name="submit" value="Chercher" /> 
+			</form>
+        </div>
+		<div class="col-md-offset-3 col-md-3">
+			<img src="pics/follow/facebook.ico" id="follow" title="Facebook" width="50px"/><img src="pics/follow/twitter.png" id="follow" title="Twitter" width="50px"/><img src="pics/follow/instagram.jpg" id="follow" title="Instagram" width="50px"/> <a href="contactUs.php">Contact</a>
+        </div>
+      </header>
+	  <body>
+		<?php include('cats.php') ?>
+          <div class="row" id="autre">
+            <div class="col-lg-6">
+				<?php include('last_images.php') ?>
+            </div>
+            <div class="col-lg-offset-6 col-lg-6">
+				<?php include('last_news.php') ?>
+            </div>
+          </div>
 
     </body>
-
+	<?php include('footer.php') ?>
 </html>
