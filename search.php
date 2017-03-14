@@ -9,19 +9,27 @@
     <body>
 <?php
 require('connect.php');
-if(isset($_POST['search']) != NULL){
+if(!empty($_POST['search'])){
 
     $requete = htmlspecialchars($_POST['search']);
-    $req = $bdd->prepare("SELECT * FROM items AS A ,artistes AS B ,events AS C ,news AS D WHERE COALESCE(A.nom, '') || COALESCE(A.description, '') || COALESCE(A.artist, '')
-		|| COALESCE(B.name, '') || COALESCE(C.nom, '') || COALESCE(C.description, '') || COALESCE(D.title, '') || COALESCE(D.content, '') LIKE :search"); 
-    $req->execute(array(':search' =>'%'. $requete . '%'));
+    //$req = $bdd->prepare("SELECT * FROM items AS A ,artistes AS B ,events AS C ,news AS D WHERE A.nom LIKE :search OR A.description LIKE :search OR A.artist LIKE :search OR B.name LIKE :search OR C.name LIKE :search OR C.description LIKE :search OR D.title LIKE :search OR D.content LIKE :search"); 
+	//$req = $bdd->prepare("SELECT * FROM items ,artistes ,events, WHERE artist LIKE :search AND description LIKE :search AND nom LIKE :search");
+	$sql = "SELECT * FROM items WHERE artist LIKE :search OR description LIKE :search OR nom LIKE :search
+		UNION SELECT * FROM artistes WHERE name LIKE :search 
+		UNION SELECT * FROM events WHERE name LIKE :search OR description LIKE :search
+		UNION SELECT * FROM news WHERE title LIKE :search OR content LIKE :search";
+	$req = $bdd->prepare($sql);
+    $req->execute(array('search' =>'%'. $requete .'%'));
     
  echo "<h3>Résultats de la recherche.</h3><br/>";
  echo "<span>";
-        while($donnees = $req->fetch(PDO::PARAM_STR)) {
+ if($req->rowCount() >= 1) {
+	         while($donnees = $req->fetch(PDO::PARAM_STR)) {
             
-			echo 'j\'ai trouvé quelque chose';
+			echo $donnees['nom']; echo '<br/>';
         }
+ }
+ else echo 'La recherche n\'a rien trouvé';
  echo "<br/><br/>";
     } 
 ?>

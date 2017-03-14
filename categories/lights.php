@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
     <head>
@@ -14,7 +14,7 @@
     <body id="admin">
 		<div class="row">
 			<div class="col-lg-offset-3 col-lg-6" id="autre">
-				<h1>Cat�gorie d'images : Vintage </h1>
+				<h1>Catégorie d'images : Lights </h1>
 			</div>
 		</div>
 		<div class="row" id="autre">
@@ -23,13 +23,13 @@
 					<?php
 					 try
 					{
-	                  
+						require('../connect.php');
 						$reponse = $bdd->query('SELECT * FROM items WHERE category = 6');
 						while ($donnees = $reponse->fetch())
 						{
 							echo '<div class="affichages">';
 							echo 'Titre : '.stripcslashes($donnees['nom']).'';
-							echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
+							echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="../'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
 							echo '</div>';
 						}							  
 						$reponse->closeCursor(); 

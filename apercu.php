@@ -43,9 +43,10 @@
 				<label id="autre"><h2>Numéro de référence pour l'oeuvre : <?php echo $donnees['ISBN'] ?> </h2></label><br/>
 				<label id="autre"><h2>Prix : <?php echo $donnees['price'] ?> </h2></label><br/>
 				<label id="autre"><h2>Est disponible à la location : <?php //echo $donnees['nom'] ?> </h2></label><br/>
+				<a href="contactUs.php?isbn=<?php echo $donnees['ISBN'] ?>" id="myButton" >Plus d'informations</a><br/>
 				<?php
 				session_start();
-					if(($_SESSION['id'] == 1)){
+					if(isset($_SESSION['id'])){
 						?>
 						<a href="admin/imgAModifier.php?id=<?php echo $idImg ?>"><input type="submit" name="modifier" id="modifier" value="Modifier" /></a>
 						<?php

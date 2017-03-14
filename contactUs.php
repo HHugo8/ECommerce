@@ -36,12 +36,19 @@
 			<div id="formContact1">
 				<div class="col-lg-offset-2 col-lg-4">
 				<form method="post" action="sent.php">
-					<label for="nom">Nom : </label><input type="text" name="nom" id="nom" required/><br />
-					<label for="prenom">Prénom : </label><input type="text" name="prenom" id="prenom" required/><br />
-					<label for="isbn">ISBN de l'oeuvre : </label><input type="text" name="isbn" id="isbn" required/><br />
-					<label for="renseignements">Renseignements : </label><textarea type="text" name="renseignements" id="renseignements"></textarea><br />
-					<label for="mail">Adresse E-mail : </label><input type="mail" name="mail" id="mail" required/><br />
-					<label for="validation"><input type="submit" name="validation" id="valid"/>
+					<label for="nom">Nom : </label><input type="text" class="form-control" name="nom" id="nom" required/><br />
+					<label for="prenom">Prénom : </label><input type="text" class="form-control" name="prenom" id="prenom" required/><br />
+					<?php
+						if(isset($_GET['isbn'])){
+							$isbn = htmlspecialchars($_GET['isbn']);
+							echo '<label for="isbn">ISBN de l\'oeuvre : </label><input type="text" class="form-control" name="isbn" id="isbn" value="'.$isbn.'" required/><br />';
+						}
+						else echo '<label for="isbn">ISBN de l\'oeuvre : </label><input type="text" class="form-control" name="isbn" id="isbn" required/><br />';
+					?>
+					
+					<label for="renseignements">Renseignements : </label><textarea class="form-control" id="renseignements" rows="3" name="renseignements"></textarea><br />
+					<label for="mail">Adresse E-mail : </label><input type="email" class="form-control" name="mail" id="mail" aria-describedby="emailHelp" placeholder="Entrez email" required><br />
+					<label for="validation"><button type="submit" class="btn btn-primary">Envoyer</button>
 				</form>
 				</div>
 			</div>
@@ -49,7 +56,7 @@
 				<div class="col-lg-offset-2 col-lg-4">
 	<form enctype="multipart/form-data" action="test_upload.php" method="post">
 		<p>
-			<label for="category">Catégorie : </label><SELECT name="category" size="1">
+			<label for="category">Catégorie : </label><SELECT name="category" class="form-control">
 												<OPTION selected>---</OPTION>
 												<OPTION value="1">Vintage</OPTION>
 												<OPTION value="2">art contemporain</OPTION>
@@ -58,13 +65,13 @@
 												<OPTION value="5">photos</OPTION>
 												<OPTION value="6">lights</OPTION>
 												<OPTION value="7">Games</OPTION></SELECT><br/>
-			<label for="nom">Nom de l'oeuvre: </label><input type="text" name="nom" id="nom" /><br />
-			<label for="description">Description : </label><textarea name="description" id="description" rows="10" cols="50"></textarea><br />
-			<label for="price">Prix : </label><input type="text" name="price" id="price" placeholder="0.0"/><br />
-			<label for="size">Dimensions : </label><input type="text" name="size" id="size" placeholder="L x l x h"/><br />
-			<label for="artist">Nom de l'artiste : </label><input type="text" name="artist" id="artist" /><br />
-			<label for="image">Image : </label><input type="file" name="monfichier" id="monfichier" /><br />
-			<label for="validation"></label><input type="submit" name="upload" id="upload" value="upload" />
+			<label for="nom">Nom de l'oeuvre: </label><input type="text" class="form-control" name="nom" id="nom" /><br />
+			<label for="description">Description : </label><textarea class="form-control" name="description" id="description" rows="10" cols="50"></textarea><br />
+			<label for="price">Prix : </label><input type="text" class="form-control" name="price" id="price" placeholder="0.0"/><br />
+			<label for="size">Dimensions : </label><input type="text" class="form-control" name="size" id="size" placeholder="L x l x h"/><br />
+			<label for="artist">Nom de l'artiste : </label><input type="text" class="form-control" name="artist" id="artist" /><br />
+			<label for="image">Image : </label><input type="file" "form-control-file" name="monfichier" id="monfichier" /><br />
+			<label for="validation"></label><button type="submit" name="upload" id="upload" class="btn btn-primary" >Envoyer</button>
 		</p>
 	</form>
 				</div>

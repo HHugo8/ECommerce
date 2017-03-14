@@ -1,9 +1,24 @@
-
+@font-face {
+	font-family: "Roboto";
+	src: url('roboto/Roboto-Black.ttf');
+}
+@font-face {
+	font-family: "Roboto";
+	font-style: italic;
+	src: url('roboto/Roboto-italic.ttf');
+}
+@font-face {
+    font-family: "Roboto";
+    font-weight: bold;
+    src: url('roboto/Roboto-Bold.ttf');
+}
 #base{
 	background-image:url(pics/background.png);
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
 #admin{
 	background-color: #193441;
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
 #menu {
 	padding: 0; margin: 0;
@@ -59,14 +74,14 @@ figcaption a{
 		text-decoration:none;
 		text-align:center;
 		font-size: 20px;
-		padding-top: 100px;
 		color: #FCFFF5;
+		border: 1px solid #FCFFF5;
 }
 figcaption a:hover{
+		text-decoration:none;
 		text-align:center;
 		font-size: 20px;
-		padding-top: 100px;
-		color: white;
+		color: red;
 }
 figure:hover img {
     transform: scale(1.1);

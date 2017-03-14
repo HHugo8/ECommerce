@@ -1,0 +1,4 @@
+AuthUserFile C:\wamp64\www\ECommerce\admin\.htpasswd
+AuthName "L'accès à ce répertoire est sécurisé."
+AuthType Basic
+Require valid-user

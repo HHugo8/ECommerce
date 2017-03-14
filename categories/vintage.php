@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
     <head>
@@ -23,13 +23,13 @@
 					<?php
 					 try
 					{
-	                  
+						require('../connect.php');
 						$reponse = $bdd->query('SELECT * FROM items WHERE category = 1');
 						while ($donnees = $reponse->fetch())
 						{
 							echo '<div class="affichages">';
 							echo 'Titre : '.stripcslashes($donnees['nom']).'';
-							echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
+							echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="../'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
 							echo '</div>';
 						}							  
 						$reponse->closeCursor(); 
