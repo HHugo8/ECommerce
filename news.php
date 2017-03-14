@@ -15,6 +15,7 @@
 					<h1>Liste des news</h1>
 				</div>
 			</div>
+<<<<<<< HEAD
 			<div>
 				<div>
 					<?php include('menuVertical.php') ?>
@@ -48,5 +49,36 @@
 				</div>
 			</div>
 		<?php include('comments.php') ?>
+=======
+				<?php
+				 try
+				{
+					require('connect.php');
+					$reponse = $bdd->query('SELECT * FROM news');
+					 
+					while ($donnees = $reponse->fetch())
+					{?>
+						<div class="row row-eq-height" id="autre">
+							<div class="col-lg-offset-3 col-lg-6" >
+								<div id="affichage_news">
+								Titre : <?php echo nl2br(stripcslashes($donnees['title']))?><br/>
+								Catégorie : <?php echo $donnees['category']?><br/>
+								Contenu : <?php echo nl2br(stripcslashes($donnees['content']))?><br/>
+								</div>
+							</div>
+						</div><?php
+					}							  
+					$reponse->closeCursor(); 
+				}
+				catch(Exception $e)
+				{
+					die('Erreur : '.$e->getMessage());
+				}
+				 
+				 
+				?>
+			</div>
+		</div>
+>>>>>>> origin/master
 	</body>
 </html>

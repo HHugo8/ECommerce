@@ -1,5 +1,9 @@
  <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
     <head>
 
         <meta charset="utf-8" />
@@ -13,12 +17,19 @@
 					<h2>Les dernières news</h2>
 				</div>
 			</div>
+<<<<<<< HEAD
 			<div class="row" id="autre">
+=======
+>>>>>>> origin/master
 				<?php
 				 try
 				{
 					require('connect.php');
 					$reponse = $bdd->query('SELECT * FROM news ORDER BY created LIMIT 5');
+<<<<<<< HEAD
+=======
+					 
+>>>>>>> origin/master
 					while ($donnees = $reponse->fetch())
 					{?>
 						<div class="row" id="autre">
@@ -36,8 +47,17 @@
 				catch(Exception $e)
 				{
 					die('Erreur : '.$e->getMessage());
+<<<<<<< HEAD
 				} 
 				?>
 			</div>
+=======
+				}
+				 
+				 
+				?>
+			</div>
+		</div>
+>>>>>>> origin/master
 	</body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 function ajout_image($nom, $category, $chemin, $extension, $isbn, $description, $artist, $prix, $size, $upload_date)
 {
 	require('connect.php');
@@ -15,6 +16,14 @@ function random($car)
 	}
 	return $string;
 }
+=======
+function ajout_image($nom, $category, $chemin, $extension, $description, $artist, $prix, $size, $upload_date)
+{
+	require('connect.php');
+	$result = $bdd->prepare('INSERT INTO items (id_items, nom, category, link, extension, description, artist, price, size, upload_date, isApproved) VALUES(0 , :nom, :category, :link, :extension, :description, :artist, :price, :size, :upload_date, 0)');
+	$result->execute(array('nom' => $nom , 'category' => $category, 'link' => $chemin , 'extension' => $extension, 'description' => $description , 'artist' => $artist, 'price' => $prix, 'size' => $size, 'upload_date' => $upload_date ));
+};
+>>>>>>> origin/master
 		$dossier = 'site/';
 		$fichier = basename($_FILES['monfichier']['name']);
 		$taille_maxi = 300000;
@@ -41,17 +50,26 @@ function random($car)
 				$chemin = $dossier . $fichier;
 				$nom = htmlspecialchars(addslashes($_POST['nom']));
 				$description = htmlspecialchars(addslashes($_POST['description']));
+<<<<<<< HEAD
 				$artist = htmlspecialchars(addslashes($_POST['artist']));				
 				if(filter_var($_POST['price'], FILTER_VALIDATE_FLOAT) === false) echo 'Mauvais format de prix';
 				else{
 					$prix = htmlspecialchars(addslashes($_POST['price']));
 				}
+=======
+				$artist = htmlspecialchars(addslashes($_POST['artist']));
+				$prix = htmlspecialchars(addslashes($_POST['price']));
+>>>>>>> origin/master
 				$size = htmlspecialchars(addslashes($_POST['size']));
 				$category = $_POST['category'];
 				$extension = $_FILES['monfichier']['type'];
 				$upload_date = date("Y-m-d h:i:s");
+<<<<<<< HEAD
 				$isbn = random(20);
 				ajout_image($nom, $category, $chemin, $extension, $isbn, $description, $artist, $prix, $size, $upload_date);
+=======
+				ajout_image($nom, $category, $chemin, $extension, $description, $artist, $prix, $size, $upload_date);
+>>>>>>> origin/master
 			}
 			else 
 			{

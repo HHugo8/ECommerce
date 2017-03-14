@@ -43,7 +43,11 @@ dans le contact us, faire apparaitre un menu en fonction du choix
 
 
 Flux rss
+<<<<<<< HEAD
 pop up au lancement de l'accueil pour newsletter
+=======
+pop up au lancement de l'accueil
+>>>>>>> origin/master
 
 08 mars présentation du cahier des charges
 29 mars, 1ere présentation du travail

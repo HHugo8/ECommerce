@@ -17,6 +17,7 @@
 		</div>
 		<div class="row row-eq-height" id="autre">
 			<div class="col-lg-1" id="cats">
+<<<<<<< HEAD
 				<label>Vintage</label>
 			</div>
 			<div class="col-lg-11">
@@ -49,21 +50,31 @@
 		<div class="row row-eq-height" id="autre">
 			<div class="col-lg-1" id="cats">
 				<label>Art contemporain</label>
+=======
+				<label>Lights</label>
+>>>>>>> origin/master
 			</div>
 			<div class="col-lg-11">
 				 <?php
 				 try
 				{
 					require('connect.php');
+<<<<<<< HEAD
 					$reponse = $bdd->query('SELECT * FROM items WHERE category = 2 AND isApproved = 1');
+=======
+					$reponse = $bdd->query('SELECT * FROM items WHERE category = 6');
+>>>>>>> origin/master
 					 
 					while ($donnees = $reponse->fetch())
 					{
 						echo '<div class="affichages">';
 						echo 'Titre : '.stripcslashes($donnees['nom']).'';
 						echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
+<<<<<<< HEAD
 						if(isset($_SESSION['id'])){
 						echo '<a href="admin/supprimerImage.php?id='.$donnees['id_items'].'" id="myButton">Supprimer</a>';}
+=======
+>>>>>>> origin/master
 						echo '</div>';
 					}							  
 					$reponse->closeCursor(); 
@@ -79,22 +90,33 @@
 		</div>
 		<div class="row row-eq-height" id="autre">
 			<div class="col-lg-1" id="cats">
+<<<<<<< HEAD
 				<label>Painting</label>
+=======
+				<label>Vintage</label>
+>>>>>>> origin/master
 			</div>
 			<div class="col-lg-11">
 				 <?php
 				 try
 				{
 					require('connect.php');
+<<<<<<< HEAD
 					$reponse = $bdd->query('SELECT * FROM items WHERE category = 3 AND isApproved = 1');
+=======
+					$reponse = $bdd->query('SELECT * FROM items WHERE category = 1');
+>>>>>>> origin/master
 					 
 					while ($donnees = $reponse->fetch())
 					{
 						echo '<div class="affichages">';
 						echo 'Titre : '.stripcslashes($donnees['nom']).'';
 						echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
+<<<<<<< HEAD
 						if(isset($_SESSION['id'])){
 						echo '<a href="admin/supprimerImage.php?id='.$donnees['id_items'].'" id="myButton">Supprimer</a>';}
+=======
+>>>>>>> origin/master
 						echo '</div>';
 					}							  
 					$reponse->closeCursor(); 
@@ -108,6 +130,7 @@
 				?>
 			</div>
 		</div>
+<<<<<<< HEAD
 			<div class="row row-eq-height" id="autre">
 				<div class="col-lg-1" id="cats">
 					<label>Black and White</label>
@@ -266,4 +289,7 @@
 		</div>
 	</body>
 	<?php include('footer.php') ?>
+=======
+	</body>
+>>>>>>> origin/master
 </html>
