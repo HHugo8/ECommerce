@@ -36,11 +36,11 @@ session_start();
 						echo '<form action="verificationImages.php" method="post">';
 						echo '<a href="../apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="../'.$donnees['link'].'"/></a><br/>';
 						echo '<input type="hidden" name="id_item" id="id_item" value="'.$donnees['id_items'].'" /><br/>';
-						echo '<label id="autre">Nom : </label><input type="text" name="name" id="name" value="'.stripcslashes($donnees['nom']).'" required /><br/>';
-						echo '<label id="autre">Description : </label><textarea name="description" id="description" value="'.stripcslashes($donnees['description']).'" required ></textarea><br/>';
-						echo '<label id="autre">Prix : </label><input type="text" name="price" id="price" value="'.$donnees['price'].'" required /><br/>';
-						echo '<label id="autre">Taille : </label><input type="text" name="size" id="size" value="'.$donnees['size'].'" required /><br/>';
-						echo '<input type="submit" name="save" id="save" value="save" />'; 
+						echo '<label id="autre">Nom : </label><input type="text" class="form-control" name="name" id="name" value="'.stripcslashes($donnees['nom']).'" required /><br/>';
+						echo '<label id="autre">Description : </label><textarea name="desc" class="form-control" id="desc" required >'.stripcslashes($donnees['description']).'</textarea><br/>';
+						echo '<label id="autre">Prix : </label><input type="text" class="form-control" name="price" id="price" value="'.$donnees['price'].'" required /><br/>';
+						echo '<label id="autre">Taille : </label><input type="text" class="form-control" name="size" id="size" value="'.$donnees['size'].'" required /><br/>';
+						echo '<input type="submit" name="save" id="save" value="Sauvegarder" />'; 
 						echo '</form>';
 						echo '</div>';
 					}						

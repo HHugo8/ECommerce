@@ -17,7 +17,7 @@
 		}
 	   </style>
     </head>
-	<body id="contact">
+	<body id="base">
 		<div class="row" id="autre">
 		 <div class="col-lg-offset-4 col-lg-4" >
 				<h1>Formulaire de contact</h1>

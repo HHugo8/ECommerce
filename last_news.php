@@ -1,9 +1,5 @@
  <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
     <head>
 
         <meta charset="utf-8" />
@@ -17,27 +13,21 @@
 					<h2>Les dernières news</h2>
 				</div>
 			</div>
-<<<<<<< HEAD
 			<div class="row" id="autre">
-=======
->>>>>>> origin/master
 				<?php
 				 try
 				{
 					require('connect.php');
-					$reponse = $bdd->query('SELECT * FROM news ORDER BY created LIMIT 5');
-<<<<<<< HEAD
-=======
-					 
->>>>>>> origin/master
+					$reponse = $bdd->query('SELECT * FROM news ORDER BY created LIMIT 3');
 					while ($donnees = $reponse->fetch())
 					{?>
 						<div class="row" id="autre">
-							<div class="col-md-offset-4 col-md-4" >
+							<div class="col-md-offset-3 col-md-6" >
 								<div id="affichage_news">
 								Titre : <?php echo nl2br(stripcslashes($donnees['title']))?><br/>
 								Catégorie : <?php echo $donnees['category']?><br/>
 								Contenu : <?php echo nl2br(stripcslashes($donnees['content']))?><br/>
+								<a href="readMore.php?id=<?php echo $donnees['id_news']?>" >Lire plus</a>
 								</div>
 							</div>
 						</div><?php
@@ -47,17 +37,8 @@
 				catch(Exception $e)
 				{
 					die('Erreur : '.$e->getMessage());
-<<<<<<< HEAD
 				} 
 				?>
 			</div>
-=======
-				}
-				 
-				 
-				?>
-			</div>
-		</div>
->>>>>>> origin/master
 	</body>
 </html>

@@ -1,6 +1,5 @@
  <!DOCTYPE html>
 <html>
-
     <head>
 
         <meta charset="utf-8" />
@@ -11,31 +10,36 @@
     </head>
 	<body id="base">
 			<div class="row row-eq-height" id="autre">
-				<div class="col-lg-offset-2 col-lg-8">
+				<div class="col-md-offset-2 col-md-8">
 					<h1>Liste des news</h1>
 				</div>
 			</div>
-<<<<<<< HEAD
 			<div>
 				<div>
-					<?php include('menuVertical.php') ?>
 						<?php
 						 try
 						{
 							require('connect.php');
 							$reponse = $bdd->query('SELECT * FROM news');
-							 
+							
 							while ($donnees = $reponse->fetch())
 							{?>
-								<div class="row row-eq-height" id="autre">
-									<div class="col-lg-offset-2 col-lg-6" >
-										<div id="affichage_news">
-										Titre : <?php echo nl2br(stripcslashes($donnees['title']))?><br/>
-										Catégorie : <?php echo $donnees['category']?><br/>
-										Contenu : <?php echo nl2br(stripcslashes($donnees['content']))?><br/>
+							<div class="row row-eq-height">
+								<div class="col-md-offset-3 col-md-6" >
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h3 class="panel-title"><?php echo nl2br(stripcslashes($donnees['title']))?></h3>
 										</div>
+										<div class="panel-body"><?php echo nl2br(stripcslashes($donnees['content']))?></div><br/><a href="readMore.php?id=<?php echo $donnees['id_news']?>" >Lire plus</a>
+										<?php
+										$name = $bdd->query('SELECT name as name FROM categories WHERE id = '.$donnees['category'].'');
+										while ($result = $name->fetch()){echo '<div class="panel-footer">Catégorie de la news  : <b>'.$result['name'].'</b></div>';}
+										?>
 									</div>
-								</div><?php
+								</div>
+							</div><br/>
+				</div>
+			</div><?php
 							}							  
 							$reponse->closeCursor(); 
 						}
@@ -48,37 +52,5 @@
 						?>
 				</div>
 			</div>
-		<?php include('comments.php') ?>
-=======
-				<?php
-				 try
-				{
-					require('connect.php');
-					$reponse = $bdd->query('SELECT * FROM news');
-					 
-					while ($donnees = $reponse->fetch())
-					{?>
-						<div class="row row-eq-height" id="autre">
-							<div class="col-lg-offset-3 col-lg-6" >
-								<div id="affichage_news">
-								Titre : <?php echo nl2br(stripcslashes($donnees['title']))?><br/>
-								Catégorie : <?php echo $donnees['category']?><br/>
-								Contenu : <?php echo nl2br(stripcslashes($donnees['content']))?><br/>
-								</div>
-							</div>
-						</div><?php
-					}							  
-					$reponse->closeCursor(); 
-				}
-				catch(Exception $e)
-				{
-					die('Erreur : '.$e->getMessage());
-				}
-				 
-				 
-				?>
-			</div>
-		</div>
->>>>>>> origin/master
 	</body>
 </html>

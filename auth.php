@@ -17,14 +17,14 @@
 				echo '<p>', htmlspecialchars($errorMessage) ,'</p>';
 			  }
 			?>
-			<div class="form-group has-success">
-				  <label class="form-control-label" for="login">Login</label>
-				  <input type="text" class="form-control form-control-success" id="login" name="login" placeholder="Nom d'utilisateur">
-			</div>
-		    <div class="form-group mx-sm-3 has-success">
-				<label for="password" class="form-control-label">Mot de passe</label>
-				<input type="password" class="form-control form-control-success" id="password" name="password" placeholder="Password">
-		    </div>
+			  <div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+				<input type="text" class="form-control" id="login" name="login" placeholder="Nom d'utilisateur">
+			  </div>
+			  <div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+			  </div>
 	  <button type="submit" class="btn btn-primary">S'enregistrer</button>
 		</fieldset>
 </form>

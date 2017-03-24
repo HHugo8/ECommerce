@@ -43,13 +43,21 @@ dans le contact us, faire apparaitre un menu en fonction du choix
 
 
 Flux rss
-<<<<<<< HEAD
 pop up au lancement de l'accueil pour newsletter
-=======
-pop up au lancement de l'accueil
->>>>>>> origin/master
 
 08 mars présentation du cahier des charges
 29 mars, 1ere présentation du travail
 
 rajouter un isbn dans les oeuvres/dispo location
+
+ajouter font gloss and bloom pour le titre
+
+ajouter la possibilité de rajouter l'url d'une video lors de la creation d'une news ou d'un event
+
+augmenter la taille des images sur l'accueil
+
+mettre un plan du site dans le footer
+
+pour la video youtube, mettre un champ qui contient l'url de la video et faire un replace avec une iframe vide pour l'affichage
+
+probleme update nb items d'un artiste

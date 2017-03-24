@@ -43,20 +43,22 @@
 			</div>
 		</div>
 		<?php
+		// verifier quel artiste ishonor, update de cette personne, updatete avec la nouvelle entrée
 	if(isset($_POST['category'])){
 		$artistName = htmlspecialchars($_POST['category']);
 		require('../connect.php');
-			$test = $bdd->prepare("SELECT count(*) FROM artistes WHERE isHonor = 1 AND name = :name");
-			$test->execute(array('name' => $artistName));
-			$nb = $test->rowCount();
-			if($nb >= 1) {
+			$comp = $bdd->prepare("SELECT name FROM artistes WHERE isHonor = 1 and name = :name");
+			$comp->execute(array('name' => $artistName));
+			$result = $comp->rowCount();
+			if($result == 1){
 				echo '<div class="row" id="autre">';
 					echo '<div class="col-md-offset-4 col-md-4">';
-						echo '<p>Cet artiste est déjà à l\'honneur</p>';
+						echo '<p>'.$artistName.' est déjà à l\'honneur</p>';
 					echo '</div>';
 				echo '</div>';
 			}
 			else {
+				$reset = $bdd->query("UPDATE  artistes SET isHonor = 0");
 				$update = $bdd->prepare("UPDATE  artistes SET isHonor = 1 WHERE name = :name");
 				$update->execute(array('name' => $artistName));
 					echo '<div class="row" id="autre">';
@@ -65,6 +67,7 @@
 						echo '</div>';
 					echo '</div>';
 			}
+
 	}
    
    ?>

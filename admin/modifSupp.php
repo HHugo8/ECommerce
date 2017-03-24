@@ -7,7 +7,7 @@ function modifImage($nom, $description ,$prix, $size, $idImg){
 }
 	if (!empty($_POST['name']) AND !empty($_POST['description']) AND !empty($_POST['price']) AND !empty($_POST['size'])){
 		$nom = htmlspecialchars(addslashes($_POST['name']));
-		$description = htmlspecialchars(addslashes($_POST['description']));
+		$description = htmlspecialchars(addslashes($_POST['desc']));
 		$prix = $_POST['price'];
 		$size = $_POST['size'];
 		$idImg = intval($_GET['id_item']);

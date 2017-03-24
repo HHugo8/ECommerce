@@ -21,20 +21,21 @@
 				<p>
 					<div class="row">
 						<div class="col-md-offset-3 col-md-6" id="autre">
-							<label for="nom">Titre de l'évènement : </label><input type="text" class="form-control form-control-success" name="title" id="title" /><br />
+							<label for="nom">Titre de l'évènement : </label><input type="text" class="form-control form-control-success" name="name" id="name" /><br />
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-offset-3 col-md-6" id="autre">
 							<label for="category">Catégorie : </label><SELECT name="category" class="form-control">
-								<OPTION selected>---</OPTION>
-								<OPTION value="1">Vintage</OPTION>
-								<OPTION value="2">art contemporain</OPTION>
-								<OPTION value="3">painting</OPTION>
-								<OPTION value="4">black and white</OPTION>
-								<OPTION value="5">photos</OPTION>
-								<OPTION value="6">lights</OPTION>
-								<OPTION value="7">Games</OPTION></SELECT><br/>
+															<OPTION selected>---</OPTION>
+															<OPTION value="1">Vintage</OPTION>
+															<OPTION value="2">Art contemporain</OPTION>
+															<OPTION value="3">Painting</OPTION>
+															<OPTION value="4">Black and White</OPTION>
+															<OPTION value="5">Photos</OPTION>
+															<OPTION value="6">Lights</OPTION>
+															<OPTION value="7">Games</OPTION>
+															<OPTION value="8">Sculptures</OPTION></SELECT><br/>
 						</div>
 					</div>
 					<div class="row">
@@ -44,7 +45,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-offset-3 col-md-6" id="autre">
-							<label for="date">Date de l'évènement : </label><input type="date" class="form-control form-control-success"  id='date' placeholder="yyyy-mm-dd" /><br />    
+							<label for="date">Date de l'évènement : </label><input type="date" class="form-control form-control-success" name="date"  id="date" placeholder="yyyy-mm-dd" /><br />    
 						</div>
 					</div>
 					<div class="row">

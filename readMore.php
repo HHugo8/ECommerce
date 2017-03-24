@@ -2,7 +2,7 @@
 
 <html>
    <head>
-       <title>Ma galerie d'images</title>
+       <title>News</title>
        <meta charset="utf8" />
 	   <link rel="stylesheet" href="main.css" type="text/css"/>
 	   <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -13,13 +13,13 @@
 	<?php
     if(!empty($_GET['id'])) {
 	require('connect.php');
-	$idImg = intval($_GET['id']);
-	$_SESSION['idImg'] = $idImg;
-	$req = $bdd->prepare('SELECT * FROM items WHERE id_items = :id');
-	$req->execute(array('id' => $idImg));		
+	$idNews = intval($_GET['id']);
+ 
+	$req = $bdd->prepare('SELECT * FROM news WHERE id_news = :id');
+	$req->execute(array('id' => $idNews));		
  
 	if($req->rowCount() != 1)
-		echo 'L\'image n\'existe pas !';
+		echo 'La news n\'existe pas !';
 	else {
 		$donnees = $req->fetch();		
 	}
@@ -27,45 +27,49 @@
 	$req->closeCursor();
  
     } else
-           echo 'Vous n avez pas sélectionné d\'image !';
+           echo 'Vous n avez pas sélectionné de news !';
 ?>
-		<div class="row">
-			<div class=" col-md-offset-2 col-md-8">
-				<label id="autre"><h1><?php echo $donnees['nom'] ?></h1></label>
-			</div>
-		</div>
 		<div class="row">
 		<?php include('menuVertical.php') ?>
 			<div class=" col-md-8">
-				<label id="autre"><img src="<?php echo $donnees['link'] ?>" style="max-width:1000px;"/></label><br/>
-				<label id="autre"><h2>Description : <?php echo $donnees['description'] ?> </h2></label><br/>
-				<label id="autre"><h2>Dimensions de l'oeuvre : <?php echo $donnees['size'] ?> </h2></label><br/>
-				<label id="autre"><h2>Numéro de référence pour l'oeuvre : <?php echo $donnees['ISBN'] ?> </h2></label><br/>
-				<label id="autre"><h2>Prix TTC : <?php echo $donnees['price'] ?> euros</h2></label><br/>
-				<label id="autre"><h2>Est disponible à la location : <?php if($donnees['isLocated'] == 1) echo 'Non'; else echo 'Louée'; ?> </h2></label><br/>
-				<a href="contactUs.php?isbn=<?php echo $donnees['ISBN'] ?>" id="myButton" >Plus d'informations</a><br/>
+				<div class="row">
+					<div class="col-md-offset-3 col-md-6 panel panel-primary">
+					  <div class="panel-heading"><h1><?php echo stripcslashes($donnees['title']) ?></h1></div>
+					  <div class="panel-body"><?php echo stripcslashes($donnees['content']) ?></div>
+					</div>
+				</div>
 				<?php
 				session_start();
-				$_SESSION['idImg'] = $idImg;
+				$_SESSION['idNews'] = $idNews;
 					if(isset($_SESSION['id'])){
 						?>
-						<form action="admin/imgAModifier.php" method="post">
-							<input type="hidden" name="idImg" id="idImg" value="<?php echo $idImg ?>" />
+						<form action="admin/newsAModifier.php" method="post">
+							<input type="hidden" name="idNews" id="idNews" value="<?php echo $idNews ?>" />
 							<input type="submit" name="modifier" id="modifier" value="Modifier" />
 						</form>
-						<a href="admin/supprimerImage.php?id=<?php echo $idImg ?>" id="myButton">Supprimer</a>';
+						<form action="admin/newsASupprimer.php" method="post">
+							<input type="hidden" name="idNews" id="idNews" value="<?php echo $idNews ?>" />
+							<input type="submit" name="supprimer" id="supprimer" value="Supprimer" />
+						</form>
 						<?php
 					}
 				try
 				{
-					$reponse = $bdd->query('SELECT * FROM commentaires WHERE is_approved = 1 AND id_image = '.$idImg.'');
+					$reponse = $bdd->query('SELECT * FROM commentaires WHERE is_approved = 1 AND id_news = '.$idNews.'');
+						echo '<div class="row">';
 						while ($donnees = $reponse->fetch())
 					{
 						echo '<div class="col-md-offset-2 col-md-8">';
-						echo '<label id="autre">Email : </label><input type="email" name="email" id="email" value="'.stripcslashes($donnees['mail']).'" disabled /><br/>';
-						echo '<label id="autre">Message : </label><textarea name="message" id="message" value="'.stripcslashes($donnees['message']).'" disabled ></textarea><br/>';
-						echo '</div>';
-					}						
+						  echo '<div class="panel-heading">';
+							echo '<input type="email" name="email" id="email" value="'.stripcslashes($donnees['mail']).'" disabled />';
+						  echo '</div>';
+						  echo '<div class="panel-body">';
+							echo '<input type="text" name="message" id="message" value="'.stripcslashes($donnees['message']).'" disabled />';
+						  echo '</div>';
+						  echo '</div>';
+						
+					}	
+					echo '</div>';
 					$reponse->closeCursor(); 
 				}
 				catch(Exception $e)
@@ -82,8 +86,8 @@
 		</div>
 		<div class="row" id="autre">
 			<div class="col-md-offset-4 col-md-4">
-				<form class="form-inline" action="apercu.php?id=<?php echo $idImg?>" method="post">
-						<div class="row">
+				<form class="form-inline" action="readMore.php?id=<?php echo $idNews?>" method="post">
+					<div class="row">
 						<div class="col-md-offset-2 col-md-8" id="autre">
 							<label for="Email">Email : </label><input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Entrez votre email"><br/>
 						</div>
@@ -93,9 +97,10 @@
 							<label for="Message">Votre message : </label><textarea class="form-control" id="message" id="message" rows="3"></textarea><br/>
 						</div>
 					</div>
-					<label for="id"></label><input type="hidden" class="form-control" name="id" id="id" value="<?php echo $idImg?>">
+					<label for="id"></label><input type="hidden" class="form-control" name="id" id="id" value="<?php echo $idNews?>">
 					<button type="submit" class="btn btn-primary">Envoyer</button>
 				</form>
+			</div>
 		</div>
 		<?php
     if(isset($_POST['email'])) 
@@ -109,7 +114,7 @@
 		$date = date("Y-m-d");
 		$cat = $donnees['category'];
 		require('connect.php');
-		$result = $bdd->prepare("INSERT INTO commentaires(id_commentaire, id_news, id_image, message, mail, post_date, is_approved) VALUES (0 ,0 , :id , :message , :mail, :date, 0)");
+		$result = $bdd->prepare("INSERT INTO commentaires(id_commentaire, id_news, id_image, message, mail, post_date, is_approved) VALUES (0 ,:id, 0 , :message , :mail, :date, 0)");
 		$result->execute(array('id' => $id, 'message' => $message, 'mail' => $email, 'date' => $date));
 		echo '<div class="alert alert-success">';
 		echo '<strong>Success!</strong> Votre message a été envoyé, il devra être approuvé par un administrateur';

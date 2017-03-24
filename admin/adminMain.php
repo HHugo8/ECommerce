@@ -28,7 +28,7 @@ else {
 		</div>
 		<div class="row" id="choix">
 			<div class="col-md-offset-3 col-md-2">
-				<a href="createPost.php" id="myButton">Créer un post</a>
+				<a href="createPost.php" id="myButton">Créer une news</a>
 			</div>
 			<div class="col-md-2">
 				<a href="../traitement.php" id="myButton">Uploader des images</a>
@@ -57,6 +57,11 @@ else {
 			</div>
 			<div class="col-md-2">
 				<a href="verifComments.php" id="myButton">Vérifier les commentaires</a>
+			</div>
+		</div>
+		<div class="row" id="choix">
+			<div class="col-md-offset-3 col-md-2">
+				<a href="../stats.php" id="myButton">Les statistiques du site</a>
 			</div>
 		</div>
 	</body>

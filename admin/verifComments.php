@@ -25,20 +25,18 @@ session_start();
 				 try
 				{
 					require('../connect.php');
-					$reponse = $bdd->query('SELECT * FROM commentaires WHERE isApproved = 0');
-					$count = $bdd->query('SELECT count(id_commentaire) as countId FROM commentaires WHERE isApproved = 0');
-					$nbligne = $count->fetch();
-					if($nbligne['countId'] == 0) echo 'Il n\'y a aucun commentaire à vérifier pour le moment';
+					$reponse = $bdd->query('SELECT * FROM commentaires WHERE is_approved = 0');
+					$count = $bdd->query('SELECT count(*) FROM commentaires WHERE is_approved = 0');
+					if($count == 0) echo 'Il n\'y a aucun commentaire à vérifier pour le moment<br/>';
 					else{
 						while ($donnees = $reponse->fetch())
 					{
 						echo '<div class="affichages">';
-						echo '<form action="verificationComments.php" method="post">';
-						echo '<input type="hidden" name="id_commentaire" id="id_commentaire" value="'.$donnees['id_items'].'" /><br/>';
-						echo '<label id="autre">Message : </label><input type="text" name="name" id="name" value="'.stripcslashes($donnees['nom']).'" required /><br/>';
-						echo '<label id="autre">Email : </label><textarea name="description" id="description" value="'.stripcslashes($donnees['description']).'" required ></textarea><br/>';
-						echo '<label id="autre">Date du message : </label><input type="text" name="price" id="price" value="'.$donnees['price'].'" required /><br/>';
-						echo '<input type="submit" name="save" id="save" value="save" />'; 
+						echo '<form action="verifComments.php" method="post">';
+						echo '<input type="hidden" name="id_commentaire" id="id_commentaire" value="'.$donnees['id_commentaire'].'" /><br/>';
+						echo '<label id="autre">Email : </label><input type="email" name="email" id="email" value="'.stripcslashes($donnees['mail']).'" required /><br/>';
+						echo '<label id="autre">Description : </label><textarea name="message" id="message" value="'.stripcslashes($donnees['message']).'" required ></textarea><br/>';
+						echo '<button type="submit" class="btn btn-primary">Save</button>'; 
 						echo '</form>';
 						echo '</div>';
 					}						
@@ -52,9 +50,28 @@ session_start();
 				 
 				 
 				?>
+
+				<?php
+					if(isset($_POST['email']) && isset($_POST['message'])) 
+					{
+						if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false) echo 'Mauvais format d\' email';
+							else{
+									$email = htmlspecialchars(addslashes($_POST['email']));
+								}
+						$message = htmlspecialchars(addslashes($_POST['message']));
+						$date = date("Y-m-d");
+						require('../connect.php');
+						$result = $bdd->prepare("UPDATE commentaires SET is_approved = 1");
+						$result->execute(array('message' => $message, 'mail' => $email, 'date' => $date));
+						echo '<div class="alert alert-success">';
+						echo '<strong>Success!</strong> Votre message a été envoyé, il devra être approuvé par un administrateur';
+						echo '</div>';
+						
+					}
+?>
+<a href="adminMain.php" id="myButton">Retour</a>
 			</div>
 		</div>
 	</body>
 	<?php include('../footer.php') ?>
-	<a href="adminMain.php" id="myButton">Retour</a>
 </html>
