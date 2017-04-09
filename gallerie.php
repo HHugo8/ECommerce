@@ -6,20 +6,26 @@
         <meta charset="utf-8" />
         <title>E-World Art Gallery</title>
         <link rel="stylesheet" href="main.css" type="text/css"/>
-		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" href="test.css" type="text/css" media="screen"/>	
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
     </head>
 	<body id="base">
+	<?php include('navbar.php') ?>
 		<div class="row" id="autre">
-			<div class="col-lg-1">
+			<div class="col-md-1">
 				<h3>Catégories</h3>
 			</div>
 		</div>
 		<div class="row row-eq-height" id="autre">
-			<div class="col-lg-1" id="cats">
+			<div class="col-md-1" id="cats">
 				<label>Vintage</label>
 			</div>
-			<div class="col-lg-11">
+			<div class="col-md-11">
 				 <?php
 				 session_start();
 
@@ -28,16 +34,15 @@
 					require('connect.php');
 					$reponse = $bdd->query('SELECT * FROM items WHERE category = 1 AND isApproved = 1');
 					 
+					 
 					while ($donnees = $reponse->fetch())
 					{
 						  echo '<div class="col-xs-3 col-md-3">';
-							echo 'Titre : '.stripcslashes($donnees['nom']).'';
-							echo '<a href="apercu.php?id='.$donnees['id_items'].'" class="thumbnail"><img src="'.$donnees['link'].'" alt="..."></a>';
+								echo '<h3>'.stripcslashes($donnees['nom']).'</h3>';
+									echo '<div class="embed-responsive embed-responsive-4by3">';
+										echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="embed-responsive-item" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'"/></a>';
+									echo '</div>';
 						  echo '</div>';
-						// echo '<div class="affichages">';
-						// echo 'Titre : '.stripcslashes($donnees['nom']).'';
-						// echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
-						// echo '</div>';
 					}							  
 					$reponse->closeCursor(); 
 				}
@@ -51,10 +56,10 @@
 			</div>
 		</div>
 		<div class="row row-eq-height" id="autre">
-			<div class="col-lg-1" id="cats">
+			<div class="col-md-1" id="cats">
 				<label>Art contemporain</label>
 			</div>
-			<div class="col-lg-11">
+			<div class="col-md-11">
 				 <?php
 				 try
 				{
@@ -64,10 +69,10 @@
 					while ($donnees = $reponse->fetch())
 					{
 						echo '<div class="affichages">';
-						echo 'Titre : '.stripcslashes($donnees['nom']).'';
-						echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
-						if(isset($_SESSION['id'])){
-						echo '<a href="admin/supprimerImage.php?id='.$donnees['id_items'].'" id="myButton">Supprimer</a>';}
+								echo '<h3>'.stripcslashes($donnees['nom']).'</h3>';
+									echo '<div class="embed-responsive embed-responsive-4by3">';
+										echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="embed-responsive-item" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'"/></a><br/>';
+									echo '</div>';
 						echo '</div>';
 					}							  
 					$reponse->closeCursor(); 
@@ -82,10 +87,10 @@
 			</div>
 		</div>
 		<div class="row row-eq-height" id="autre">
-			<div class="col-lg-1" id="cats">
+			<div class="col-md-1" id="cats">
 				<label>Painting</label>
 			</div>
-			<div class="col-lg-11">
+			<div class="col-md-11">
 				 <?php
 				 try
 				{
@@ -95,10 +100,10 @@
 					while ($donnees = $reponse->fetch())
 					{
 						echo '<div class="affichages">';
-						echo 'Titre : '.stripcslashes($donnees['nom']).'';
-						echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
-						if(isset($_SESSION['id'])){
-						echo '<a href="admin/supprimerImage.php?id='.$donnees['id_items'].'" id="myButton">Supprimer</a>';}
+								echo '<h3>'.stripcslashes($donnees['nom']).'</h3>';
+									echo '<div class="embed-responsive embed-responsive-4by3">';
+										echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="embed-responsive-item" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'"/></a><br/>';
+									echo '</div>';
 						echo '</div>';
 					}							  
 					$reponse->closeCursor(); 
@@ -113,10 +118,10 @@
 			</div>
 		</div>
 			<div class="row row-eq-height" id="autre">
-				<div class="col-lg-1" id="cats">
+				<div class="col-md-1" id="cats">
 					<label>Black and White</label>
 				</div>
-				<div class="col-lg-11">
+				<div class="col-md-11">
 					 <?php
 					 try
 					{
@@ -126,10 +131,10 @@
 						while ($donnees = $reponse->fetch())
 						{
 							echo '<div class="affichages">';
-							echo 'Titre : '.stripcslashes($donnees['nom']).'';
-							echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
-							if(isset($_SESSION['id'])){
-							echo '<a href="admin/supprimerImage.php?id='.$donnees['id_items'].'" id="myButton">Supprimer</a>';}
+								echo '<h3>'.stripcslashes($donnees['nom']).'</h3>';
+									echo '<div class="embed-responsive embed-responsive-4by3">';
+										echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="embed-responsive-item" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'"/></a><br/>';
+									echo '</div>';
 							echo '</div>';
 						}							  
 						$reponse->closeCursor(); 
@@ -144,10 +149,10 @@
 				</div>
 			</div>
 			<div class="row row-eq-height" id="autre">
-				<div class="col-lg-1" id="cats">
+				<div class="col-md-1" id="cats">
 					<label>Photos</label>
 				</div>
-				<div class="col-lg-11">
+				<div class="col-md-11">
 					 <?php
 					 try
 					{
@@ -156,16 +161,12 @@
 						 
 						while ($donnees = $reponse->fetch())
 						{
-							// echo '<div class="affichages">';
-							// echo 'Titre : '.stripcslashes($donnees['nom']).'';
-							// echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
 						  echo '<div class="col-xs-3 col-md-3">';
-							echo 'Titre : '.stripcslashes($donnees['nom']).'';
-							echo '<a href="apercu.php?id='.$donnees['id_items'].'" class="thumbnail"><img src="'.$donnees['link'].'" alt="..."></a><br/>';
+								echo '<h3>'.stripcslashes($donnees['nom']).'</h3>';
+									echo '<div class="embed-responsive embed-responsive-4by3">';
+										echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="embed-responsive-item" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'"/></a><br/>';
+									echo '</div>';
 						  echo '</div>';
-							// if(isset($_SESSION['id'])){
-							// echo '<a href="admin/supprimerImage.php?id='.$donnees['id_items'].'" id="myButton">Supprimer</a>';}
-							// echo '</div>';
 						}							  
 						$reponse->closeCursor(); 
 					}
@@ -179,10 +180,10 @@
 				</div>
 			</div>
 			<div class="row row-eq-height" id="autre">
-				<div class="col-lg-1" id="cats">
+				<div class="col-md-1" id="cats">
 					<label>Lights</label>
 				</div>
-				<div class="col-lg-11">
+				<div class="col-md-11">
 					 <?php
 					 try
 					{
@@ -192,8 +193,10 @@
 						while ($donnees = $reponse->fetch())
 						{
 							echo '<div class="affichages">';
-							echo 'Titre : '.stripcslashes($donnees['nom']).'';
-							echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
+								echo '<h3>'.stripcslashes($donnees['nom']).'</h3>';
+									echo '<div class="embed-responsive embed-responsive-4by3">';
+										echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="embed-responsive-item" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'"/></a><br/>';
+									echo '</div>';
 							if(isset($_SESSION['id'])){
 							echo '<a href="admin/supprimerImage.php?id='.$donnees['id_items'].'" id="myButton">Supprimer</a>';}
 							echo '</div>';
@@ -210,10 +213,10 @@
 				</div>
 			</div>
 			<div class="row row-eq-height" id="autre">
-				<div class="col-lg-1" id="cats">
+				<div class="col-md-1" id="cats">
 					<label>Games</label>
 				</div>
-				<div class="col-lg-11">
+				<div class="col-md-11">
 					 <?php
 					 try
 					{
@@ -223,8 +226,10 @@
 						while ($donnees = $reponse->fetch())
 						{
 							echo '<div class="affichages">';
-							echo 'Titre : '.stripcslashes($donnees['nom']).'';
-							echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
+								echo '<h3>'.stripcslashes($donnees['nom']).'</h3>';
+									echo '<div class="embed-responsive embed-responsive-4by3">';
+										echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="embed-responsive-item" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'"/></a><br/>';
+									echo '</div>';
 							if(isset($_SESSION['id'])){
 							echo '<a href="admin/supprimerImage.php?id='.$donnees['id_items'].'" id="myButton">Supprimer</a>';}
 							echo '</div>';
@@ -241,10 +246,10 @@
 				</div>
 			</div>
 			<div class="row row-eq-height" id="autre">
-				<div class="col-lg-1" id="cats">
+				<div class="col-md-1" id="cats">
 					<label>Sculptures</label>
 				</div>
-				<div class="col-lg-11">
+				<div class="col-md-11">
 					 <?php
 					 try
 					{
@@ -253,21 +258,14 @@
 						 
 						while ($donnees = $reponse->fetch())
 						{
-							// echo '<div class="affichages">';
-							// echo 'Titre : '.stripcslashes($donnees['nom']).'';
-							// echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a><br/>';
-							// if(isset($_SESSION['id'])){
-							// echo '<a href="admin/supprimerImage.php?id='.$donnees['id_items'].'" id="myButton">Supprimer</a>';}
-							// echo '</div>';
 							echo '<div class="row">';
-						  echo '<div class="col-sm-3 col-md-3">';
-							//echo 'Titre : '.stripcslashes($donnees['nom']).'';
-							echo '<a href="apercu.php?id='.$donnees['id_items'].'" class="thumbnail"><img src="'.$donnees['link'].'" alt="..."></a><br/>';
-						echo '<div class = "caption">';
-							echo '<h3>'.stripcslashes($donnees['nom']).'</h3>';
-						  echo '</div>';
-						  echo '</div>';
-						  echo '</div>';
+								echo '<div class="col-sm-3 col-md-3">';
+								echo '<h3>'.stripcslashes($donnees['nom']).'</h3>';
+									echo '<div class="embed-responsive embed-responsive-4by3">';
+										echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="embed-responsive-item" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'"/></a><br/>';
+									echo '</div>';
+								echo '</div>';
+							echo '</div>';
 						}							  
 						$reponse->closeCursor(); 
 					}

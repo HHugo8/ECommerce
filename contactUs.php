@@ -18,23 +18,23 @@
 	   </style>
     </head>
 	<body id="base">
+	<?php include('navbar.php') ?>
 		<div class="row" id="autre">
-		 <div class="col-lg-offset-4 col-lg-4" >
+		 <div class="col-md-offset-4 col-md-4" >
 				<h1>Formulaire de contact</h1>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-offset-4 col-lg-2" >
+			<div class="col-md-offset-4 col-md-2" >
 			<a id="button1">Plus de renseignement sur une oeuvre</a>
 			</div>
-			<div class="col-lg-2" >
+			<div class="col-md-2" >
 			<a id="button2">Vous désirez partager une oeuvre</a>
 			</div>
 		</div>
 		<div class="row">
-		<?php include('menuVertical.php') ?>
 			<div id="formContact1">
-				<div class="col-lg-offset-2 col-lg-4">
+				<div class="col-md-offset-4 col-md-4">
 				<form method="post" action="sent.php">
 					<label for="nom">Nom : </label><input type="text" class="form-control" name="nom" id="nom" required/><br />
 					<label for="prenom">Prénom : </label><input type="text" class="form-control" name="prenom" id="prenom" required/><br />
@@ -53,7 +53,7 @@
 				</div>
 			</div>
 			<div id="formContact2">
-				<div class="col-lg-offset-2 col-lg-4">
+				<div class="col-md-offset-4 col-md-4">
 	<form enctype="multipart/form-data" action="test_upload.php" method="post">
 		<p>
 			<label for="category">Catégorie : </label><SELECT name="category" class="form-control">
@@ -99,4 +99,5 @@
 		});
 		</script>
 	</body>
+	<?php include('footer.php') ?>
 </html>

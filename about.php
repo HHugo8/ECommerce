@@ -15,7 +15,8 @@ session_start();
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
-	<body id="admin">
+	<body id="base">
+	<?php include('navbar.php') ?>
 	    <header class="row" id="autre">
 			<div class="col-md-offset-5 col-md-2">
 				<p><h1>Notre équipe</h1>
@@ -71,4 +72,5 @@ session_start();
         </div>
 		
 	</body>
+	<?php include('footer.php') ?>
 </html>

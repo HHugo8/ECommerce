@@ -24,6 +24,8 @@
 	-webkit-background-size: cover;
 	background-size: cover;
 	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-size: large;
+	padding-top: 100px;
 }
 #titre{
 	/*background-image:url(pics/background.png);*/
@@ -33,6 +35,7 @@
 #admin{
 	background-color: #193441;
 	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	padding-top: 100px;
 }
 #menu {
 	padding: 0; margin: 0;
@@ -232,6 +235,9 @@ figure:hover figcaption {
 }
 #color{
 	color: #F60A20;
+}
+#color2{
+	color: #193441;
 }
 .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
 .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }

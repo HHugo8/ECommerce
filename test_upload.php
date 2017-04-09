@@ -41,6 +41,7 @@ function random($car)
 		{
 			$fichier = strtr($fichier, 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
 			$fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+					$ext = pathinfo($fichier, PATHINFO_EXTENSION);
 			if(move_uploaded_file($_FILES['monfichier']['tmp_name'], $dossier . $fichier))
 			{
 				echo 'Upload effectué avec succès !';
@@ -52,7 +53,6 @@ function random($car)
 						$artistExist = $bdd->prepare('SELECT id_artist FROM artistes WHERE name = :name');
 						$artistExist->execute(array('name' => htmlspecialchars_decode($artist)));
 						$nb = $artistExist->rowCount();
-						var_dump($nb);
 							if($nb == 0){
 								$nbItems = $bdd->prepare('SELECT id_items FROM items WHERE artist = :artist');
 								$nbItems->execute(array('artist' => htmlspecialchars_decode($artist)));

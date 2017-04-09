@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+ <?php
+ session_start();
+if(!isset($_SESSION['flag'])){
+	header('Location: ../auth.php');
+}
+else {
+	?>
 <html>
 
     <head>
@@ -10,7 +17,8 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
     </head>
-    <body>
+	<?php include('navbar.php') ?>
+    <body id="base">
 		<?php
 		require('connect.php');
 		$nb_visites = file_get_contents('data/pagesvues.txt');
@@ -116,7 +124,7 @@
 	echo '</div>';
 	echo '<div class="row row-eq-height">';
 			echo '<div class="col-md-offset-3 col-md-3">';
-				$newslettersCount = $bdd->query("SELECT COUNT(*) FROM newsletter");
+				$newslettersCount = $bdd->query("SELECT id FROM newsletter");
 				$nc = $newslettersCount->rowCount();
 				echo '<strong>Nombre de personnes inscrites à la newsletter : </strong>(' . $nc . ')<br/>';
 			echo '</div>';
@@ -125,7 +133,7 @@
 				 echo '<div class="dropdown">';
 					echo '<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Liste des emails ';
 					echo '<span class="caret"></span></button>';	
-						echo '<ul class="dropdown-menu dropdown-menu-center">';
+						echo '<ul class="dropdown-menu">';
 						while($email = $newsletters->fetch()){
 							echo '<li><a href="#">'.$email['email'].'</a></li>';						}
 						echo '</ul>';  
@@ -138,3 +146,4 @@
 
 </body>
 </html>
+<?php } ?>

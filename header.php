@@ -45,7 +45,7 @@
 				});
 			</script>
         </div>
-		<div class="col-md-offset-3 col-md-3">
+		<div class="col-md-offset-6 col-md-3">
 			<a href="https://www.facebook.com/groups/eworldartgallery/"><img src="pics/follow/facebook.ico" id="follow" title="Facebook" width="50px"/></a><img src="pics/follow/twitter.png" id="follow" title="Twitter" width="50px"/><img src="pics/follow/instagram.jpg" id="follow" title="Instagram" width="50px"/> <a href="contactUs.php">Contact</a>
         </div>
       </header>

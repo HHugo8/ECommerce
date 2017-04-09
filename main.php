@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html>
 
     <head>
@@ -70,6 +73,7 @@
 					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Inscrivez-vous à notre newsletter</button>
             </div>
 		</div>
+		
     </body>
-	<?php include('footer.php') ?><a href="traitement.php" >Upload</a>
+	<?php include('footer.php') ?><a href="traitement.php" >Upload</a><br/>
 </html>

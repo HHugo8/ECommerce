@@ -9,6 +9,7 @@
         
     </head>
 	<body id="base">
+	<?php include('navbar.php') ?>
 			<div class="row row-eq-height" id="autre">
 				<div class="col-md-offset-2 col-md-8">
 					<h1>Liste des évènements</h1>
@@ -51,4 +52,5 @@
 			</div>
 		</div>
 	</body>
+	<?php include('footer.php') ?>
 </html>

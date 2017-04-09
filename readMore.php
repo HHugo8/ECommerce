@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
    <head>
        <title>News</title>
@@ -8,7 +7,7 @@
 	   <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
    </head>
    <body id="base">
-
+	<?php include('navbar.php') ?>
  
 	<?php
     if(!empty($_GET['id'])) {
@@ -30,8 +29,7 @@
            echo 'Vous n avez pas sélectionné de news !';
 ?>
 		<div class="row">
-		<?php include('menuVertical.php') ?>
-			<div class=" col-md-8">
+			<div class="col-md-offset-2 col-md-8">
 				<div class="row">
 					<div class="col-md-offset-3 col-md-6 panel panel-primary">
 					  <div class="panel-heading"><h1><?php echo stripcslashes($donnees['title']) ?></h1></div>
@@ -55,16 +53,17 @@
 					}
 				try
 				{
+					echo '<p>Liste des commentaires</p>';
 					$reponse = $bdd->query('SELECT * FROM commentaires WHERE is_approved = 1 AND id_news = '.$idNews.'');
 						echo '<div class="row">';
 						while ($donnees = $reponse->fetch())
 					{
 						echo '<div class="col-md-offset-2 col-md-8">';
 						  echo '<div class="panel-heading">';
-							echo '<input type="email" name="email" id="email" value="'.stripcslashes($donnees['mail']).'" disabled />';
+							echo '<input type="email" class="form-control" name="email" id="email" value="'.stripcslashes($donnees['mail']).'" readonly />';
 						  echo '</div>';
 						  echo '<div class="panel-body">';
-							echo '<input type="text" name="message" id="message" value="'.stripcslashes($donnees['message']).'" disabled />';
+							echo '<textarea class="form-control" name="message" id="message" value="'.stripcslashes($donnees['message']).'" rows="10" cols="50" readonly></textarea>';
 						  echo '</div>';
 						  echo '</div>';
 						
@@ -94,7 +93,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-offset-2 col-md-8" id="autre">
-							<label for="Message">Votre message : </label><textarea class="form-control" id="message" id="message" rows="3"></textarea><br/>
+							<label for="Message">Votre message : </label><textarea class="form-control" id="message" name="message" rows="3"></textarea><br/>
 						</div>
 					</div>
 					<label for="id"></label><input type="hidden" class="form-control" name="id" id="id" value="<?php echo $idNews?>">
@@ -119,6 +118,7 @@
 		echo '<div class="alert alert-success">';
 		echo '<strong>Success!</strong> Votre message a été envoyé, il devra être approuvé par un administrateur';
 		echo '</div>';
+		header('refresh:2; URL= news.php');
 		
 	}
 ?>

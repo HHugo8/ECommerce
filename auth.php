@@ -31,34 +31,44 @@
   </body>
 </html>
 <?php
+
   // Definition des constantes et variables
   define('LOGIN','alain_boinet');
   define('PASSWORD','MDPAdmin&456');
   $errorMessage = '';
  
-  if(!empty($_POST)) 
-  {
-    if(!empty($_POST['login']) && !empty($_POST['password'])) 
-    {
-      if($_POST['login'] !== LOGIN) 
-      {
-        $errorMessage = 'Mauvais login !';
-      }
-        elseif($_POST['password'] !== PASSWORD) 
-      {  
-        $errorMessage = 'Mauvais password !';
-      }
-        else
-      {
-        session_start();
-        $_SESSION['login'] = LOGIN;
-        header('Location: admin/adminMain.php');
-        exit();
-      }
-    }
-      else
-    {
-      $errorMessage = 'Veuillez inscrire vos identifiants svp !';
-    }
-  }
+ if(!isset($_SESSION['flag'])) {
+	if(!empty($_POST)) 
+	{
+		if(!empty($_POST['login']) && !empty($_POST['password'])) 
+		{
+		  if($_POST['login'] !== LOGIN) 
+		  {
+			$errorMessage = 'Mauvais login !';
+		  }
+			elseif($_POST['password'] !== PASSWORD) 
+		  {  
+			$errorMessage = 'Mauvais password !';
+		  }
+			else
+		  {
+			session_start();
+			$_SESSION['login'] = LOGIN;
+			$_SESSION['pseudo'] = LOGIN;
+			$_SESSION['flag'] = 1;
+			header('Location: admin/adminMain.php');
+			exit();
+		  }
+		}
+		  else
+		{
+		  $errorMessage = 'Veuillez inscrire vos identifiants svp !';
+		}
+	}
+}
+else {
+		header('Location: admin/adminMain.php');
+	}
+ 
+
 ?>

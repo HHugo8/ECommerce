@@ -23,7 +23,7 @@
 						{
 							echo '<div class="affichages">';
 							echo 'Titre : '.stripcslashes($donnees['nom']).'';
-							echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a>';
+							echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" title="'.stripcslashes($donnees['description']).'" /></a>';
 							echo '</div>';
 						}							  
 						$reponse->closeCursor(); 
@@ -47,7 +47,7 @@
 						{
 							echo '<div class="affichages">';
 							echo 'Titre : '.stripcslashes($donnees['nom']).'';
-							echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" alt="'.stripcslashes($donnees['description']).'" /></a>';
+							echo '<a href="apercu.php?id='.$donnees['id_items'].'"><img class="resize" src="'.$donnees['link'].'" title="'.stripcslashes($donnees['description']).'" /></a>';
 							echo '</div>';
 						}							  
 						$reponse->closeCursor(); 

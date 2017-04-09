@@ -9,6 +9,7 @@
         
     </head>
 	<body id="base">
+	<?php include('navbar.php') ?>
 			<div class="row row-eq-height" id="autre">
 				<div class="col-md-offset-2 col-md-8">
 					<h1>Liste des news</h1>
@@ -21,7 +22,6 @@
 						{
 							require('connect.php');
 							$reponse = $bdd->query('SELECT * FROM news');
-							
 							while ($donnees = $reponse->fetch())
 							{?>
 							<div class="row row-eq-height">
@@ -33,7 +33,15 @@
 										<div class="panel-body"><?php echo nl2br(stripcslashes($donnees['content']))?></div><br/><a href="readMore.php?id=<?php echo $donnees['id_news']?>" >Lire plus</a>
 										<?php
 										$name = $bdd->query('SELECT name as name FROM categories WHERE id = '.$donnees['category'].'');
-										while ($result = $name->fetch()){echo '<div class="panel-footer">Catégorie de la news  : <b>'.$result['name'].'</b></div>';}
+										while ($result = $name->fetch()){
+											echo '<div class="panel-footer">Catégorie de la news  : <b>'.$result['name'].'</b>';
+												if(!empty($donnees['video'])){
+													echo '<iframe id="ytplayer" type="text/html" width="800px" height="450px"
+													src="https://www.youtube.com/embed/'.$donnees['video'].'?rel=0&showinfo=0&color=white&iv_load_policy=3"
+													frameborder="0" allowfullscreen></iframe> ';
+												}
+											}
+											echo '</div>';
 										?>
 									</div>
 								</div>
@@ -53,4 +61,5 @@
 				</div>
 			</div>
 	</body>
+	<?php include('footer.php') ?>
 </html>
